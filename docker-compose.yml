@@ -5,7 +5,7 @@ services:
     image: mysql:8.0
     container_name: coolie_express_db
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: Admin
       MYSQL_DATABASE: coolie_express
     ports:
       - "3306:3306"
