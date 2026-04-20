@@ -24,7 +24,7 @@ public class User {
     private Role role;
 
     @Enumerated(EnumType.STRING)
-    private AvailabilityStatus availabilityStatus;
+    private Status status;
 
     private Double pricePerBag;
 
@@ -36,39 +36,39 @@ public class User {
     }
 
     public User(Long id, String name, String email, String phone, String password, Role role,
-            AvailabilityStatus availabilityStatus, Double pricePerBag, Location currentLocation) {
+            Status status, Double pricePerBag, Location currentLocation) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.password = password;
         this.role = role;
-        this.availabilityStatus = availabilityStatus;
+        this.status = status;
         this.pricePerBag = pricePerBag;
         this.currentLocation = currentLocation;
     }
 
     public User(String name, String email, String phone, String password, Role role,
-            AvailabilityStatus availabilityStatus, Location currentLocation) {
+            Status status, Location currentLocation) {
         super();
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.password = password;
         this.role = role;
-        this.availabilityStatus = availabilityStatus;
+        this.status = status;
         this.currentLocation = currentLocation;
     }
 
     public User(String name, String email, String phone, String password, Role role,
-            AvailabilityStatus availabilityStatus, Double pricePerBag, Location currentLocation) {
+            Status status, Double pricePerBag, Location currentLocation) {
         super();
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.password = password;
         this.role = role;
-        this.availabilityStatus = availabilityStatus;
+        this.status = status;
         this.pricePerBag = pricePerBag;
         this.currentLocation = currentLocation;
     }
@@ -121,12 +121,12 @@ public class User {
         this.role = role;
     }
 
-    public AvailabilityStatus getAvailabilityStatus() {
-        return availabilityStatus;
+    public Status getStatus() {
+        return status;
     }
 
-    public void setAvailabilityStatus(AvailabilityStatus availabilityStatus) {
-        this.availabilityStatus = availabilityStatus;
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     public Double getPricePerBag() {

@@ -9,4 +9,5 @@ public interface UserService {
     UserDto getUserById(Long id);
     void deleteUser(Long id);
     UserDto updateRole(Long id, Role role);
+    UserDto updateUserLocation(Long id, String locationName);
 }

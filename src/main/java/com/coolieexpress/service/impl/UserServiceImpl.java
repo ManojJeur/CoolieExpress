@@ -3,7 +3,9 @@ package com.coolieexpress.service.impl;
 import com.coolieexpress.dto.UserDto;
 import com.coolieexpress.dto.UserMapper;
 import com.coolieexpress.entity.Role;
+import com.coolieexpress.entity.Location;
 import com.coolieexpress.entity.User;
+import com.coolieexpress.repository.LocationRepository;
 import com.coolieexpress.repository.UserRepository;
 import com.coolieexpress.service.UserService;
 import org.springframework.stereotype.Service;
@@ -16,10 +18,12 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final LocationRepository locationRepository;
 
-    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
+    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper, LocationRepository locationRepository) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
+        this.locationRepository = locationRepository;
     }
 
     @Override
@@ -46,6 +50,23 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found"));
         user.setRole(role);
+        userRepository.save(user);
+        return userMapper.toDto(user);
+    }
+
+    @Override
+    public UserDto updateUserLocation(Long id, String locationName) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        Location location = locationRepository.findByNameIgnoreCase(locationName)
+                .orElseGet(() -> {
+                    Location newLocation = new Location();
+                    newLocation.setName(locationName);
+                    return locationRepository.save(newLocation);
+                });
+
+        user.setCurrentLocation(location);
         userRepository.save(user);
         return userMapper.toDto(user);
     }

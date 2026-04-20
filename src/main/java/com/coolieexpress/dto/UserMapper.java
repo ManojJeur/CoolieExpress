@@ -16,7 +16,7 @@ public class UserMapper {
         dto.setEmail(user.getEmail());
         dto.setPhone(user.getPhone());
         dto.setRole(user.getRole());
-        dto.setAvailabilityStatus(user.getAvailabilityStatus());
+        dto.setStatus(user.getStatus());
         dto.setPricePerBag(user.getPricePerBag());
         if (user.getCurrentLocation() != null) {
             dto.setCurrentLocationId(user.getCurrentLocation().getId());

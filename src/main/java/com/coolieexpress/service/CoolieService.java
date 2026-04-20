@@ -1,10 +1,11 @@
 package com.coolieexpress.service;
 
 import com.coolieexpress.dto.UserDto;
-import com.coolieexpress.entity.AvailabilityStatus;
+import com.coolieexpress.dto.CoolieResponseDto;
+import com.coolieexpress.entity.Status;
 import java.util.List;
 
 public interface CoolieService {
-    List<UserDto> getCooliesByLocationAndAvailability(Long locationId, AvailabilityStatus status);
-    UserDto updateAvailability(Long coolieId, AvailabilityStatus status);
+    List<CoolieResponseDto> getCooliesByLocationAndAvailability(String locationName, Status status);
+    UserDto updateAvailability(Long coolieId, Status status);
 }

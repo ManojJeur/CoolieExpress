@@ -23,6 +23,13 @@ public class AuthRequestDto {
     private Role role;
     
     private Double pricePerBag;
+    
+    @NotBlank(message = "Location Name is required")
+    private String locationName;
+    
+    private String station;
+    
+    private String city;
 
     public AuthRequestDto() {}
 
@@ -38,4 +45,10 @@ public class AuthRequestDto {
     public void setRole(Role role) { this.role = role; }
     public Double getPricePerBag() { return pricePerBag; }
     public void setPricePerBag(Double pricePerBag) { this.pricePerBag = pricePerBag; }
+    public String getLocationName() { return locationName; }
+    public void setLocationName(String locationName) { this.locationName = locationName; }
+    public String getStation() { return station; }
+    public void setStation(String station) { this.station = station; }
+    public String getCity() { return city; }
+    public void setCity(String city) { this.city = city; }
 }

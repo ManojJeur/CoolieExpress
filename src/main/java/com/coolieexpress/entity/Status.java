@@ -1,6 +1,6 @@
 package com.coolieexpress.entity;
 
-public enum AvailabilityStatus {
+public enum Status {
     AVAILABLE,
     UNAVAILABLE,
     BUSY

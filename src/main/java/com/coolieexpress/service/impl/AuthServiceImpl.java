@@ -2,7 +2,9 @@ package com.coolieexpress.service.impl;
 
 import com.coolieexpress.dto.AuthRequestDto;
 import com.coolieexpress.dto.LoginRequestDto;
+import com.coolieexpress.entity.Location;
 import com.coolieexpress.entity.User;
+import com.coolieexpress.repository.LocationRepository;
 import com.coolieexpress.repository.UserRepository;
 import com.coolieexpress.security.CustomUserDetails;
 import com.coolieexpress.security.JwtUtil;
@@ -22,14 +24,16 @@ public class AuthServiceImpl implements AuthService {
     private final AuthenticationManager authenticationManager;
     private final JwtUtil jwtUtil;
     private final OtpService otpService;
+    private final LocationRepository locationRepository;
 
     public AuthServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder,
-                           AuthenticationManager authenticationManager, JwtUtil jwtUtil, OtpService otpService) {
+                           AuthenticationManager authenticationManager, JwtUtil jwtUtil, OtpService otpService, LocationRepository locationRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.authenticationManager = authenticationManager;
         this.jwtUtil = jwtUtil;
         this.otpService = otpService;
+        this.locationRepository = locationRepository;
     }
 
     @Override
@@ -50,6 +54,17 @@ public class AuthServiceImpl implements AuthService {
         if (com.coolieexpress.entity.Role.COOLIE.equals(authRequestDto.getRole())) {
             user.setPricePerBag(authRequestDto.getPricePerBag());
         }
+        
+        Location location = locationRepository.findByNameIgnoreCase(authRequestDto.getLocationName())
+                .orElseGet(() -> {
+                    Location newLocation = new Location();
+                    newLocation.setName(authRequestDto.getLocationName());
+                    newLocation.setStation(authRequestDto.getStation());
+                    newLocation.setCity(authRequestDto.getCity());
+                    return locationRepository.save(newLocation);
+                });
+        
+        user.setCurrentLocation(location);
         
         userRepository.save(user);
         otpService.generateAndSendOtp(user);

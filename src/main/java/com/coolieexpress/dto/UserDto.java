@@ -1,6 +1,6 @@
 package com.coolieexpress.dto;
 
-import com.coolieexpress.entity.AvailabilityStatus;
+import com.coolieexpress.entity.Status;
 import com.coolieexpress.entity.Role;
 
 public class UserDto {
@@ -9,7 +9,7 @@ public class UserDto {
     private String email;
     private String phone;
     private Role role;
-    private AvailabilityStatus availabilityStatus;
+    private Status status;
     private Double pricePerBag;
     private Long currentLocationId;
 
@@ -25,8 +25,8 @@ public class UserDto {
     public void setPhone(String phone) { this.phone = phone; }
     public Role getRole() { return role; }
     public void setRole(Role role) { this.role = role; }
-    public AvailabilityStatus getAvailabilityStatus() { return availabilityStatus; }
-    public void setAvailabilityStatus(AvailabilityStatus availabilityStatus) { this.availabilityStatus = availabilityStatus; }
+    public Status getStatus() { return status; }
+    public void setStatus(Status status) { this.status = status; }
     public Double getPricePerBag() { return pricePerBag; }
     public void setPricePerBag(Double pricePerBag) { this.pricePerBag = pricePerBag; }
     public Long getCurrentLocationId() { return currentLocationId; }

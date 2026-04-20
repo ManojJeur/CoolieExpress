@@ -45,7 +45,7 @@ public class BookingServiceImpl implements BookingService {
         if (coolie.getRole() != Role.COOLIE) {
             throw new RuntimeException("Target user is not a COOLIE");
         }
-        if (coolie.getAvailabilityStatus() != AvailabilityStatus.AVAILABLE) {
+        if (coolie.getStatus() != Status.AVAILABLE) {
             throw new RuntimeException("Coolie is not currently available");
         }
 
