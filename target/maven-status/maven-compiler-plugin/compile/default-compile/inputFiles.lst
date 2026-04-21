@@ -24,6 +24,7 @@ D:\Co\coolie-express\src\main\java\com\coolieexpress\config\OpenApiConfig.java
 D:\Co\coolie-express\src\main\java\com\coolieexpress\entity\Location.java
 D:\Co\coolie-express\src\main\java\com\coolieexpress\controller\TravelerController.java
 D:\Co\coolie-express\src\main\java\com\coolieexpress\service\impl\OtpServiceImpl.java
+D:\Co\coolie-express\src\main\java\com\coolieexpress\config\WebConfig.java
 D:\Co\coolie-express\src\main\java\com\coolieexpress\service\BookingService.java
 D:\Co\coolie-express\src\main\java\com\coolieexpress\entity\Role.java
 D:\Co\coolie-express\src\main\java\com\coolieexpress\service\AuthService.java

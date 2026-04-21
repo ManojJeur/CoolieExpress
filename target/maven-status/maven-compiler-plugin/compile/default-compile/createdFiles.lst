@@ -1,6 +1,7 @@
 com\coolieexpress\entity\Status.class
 com\coolieexpress\dto\BookingMapper.class
 com\coolieexpress\security\CustomUserDetailsService.class
+com\coolieexpress\config\WebConfig.class
 com\coolieexpress\dto\LocationUpdateRequestDto.class
 com\coolieexpress\repository\LocationRepository.class
 com\coolieexpress\config\SecurityConfig.class
