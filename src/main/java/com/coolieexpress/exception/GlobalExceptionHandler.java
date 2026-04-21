@@ -25,7 +25,12 @@ public class GlobalExceptionHandler {
     }
     
     @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity<String> handleRuntimeException(RuntimeException ex) {
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    public ResponseEntity<?> handleRuntimeException(RuntimeException ex) {
+        if ("INVALID_CREDENTIALS".equals(ex.getMessage())) {
+            Map<String, String> errorData = new HashMap<>();
+            errorData.put("message", "Invalid email or password");
+            return new ResponseEntity<>(errorData, HttpStatus.UNAUTHORIZED);
+        }
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 }

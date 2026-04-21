@@ -2,6 +2,7 @@ package com.coolieexpress.controller;
 
 import com.coolieexpress.dto.AuthRequestDto;
 import com.coolieexpress.dto.LoginRequestDto;
+import com.coolieexpress.dto.LoginResponseDto;
 import com.coolieexpress.dto.OtpVerificationDto;
 import com.coolieexpress.service.AuthService;
 import jakarta.validation.Valid;
@@ -29,8 +30,8 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@Valid @RequestBody LoginRequestDto dto) {
-        String token = authService.login(dto);
-        return ResponseEntity.ok(token);
+    public ResponseEntity<LoginResponseDto> login(@Valid @RequestBody LoginRequestDto dto) {
+        LoginResponseDto response = authService.login(dto);
+        return ResponseEntity.ok(response);
     }
 }

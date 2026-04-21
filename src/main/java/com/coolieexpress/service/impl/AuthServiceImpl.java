@@ -2,6 +2,7 @@ package com.coolieexpress.service.impl;
 
 import com.coolieexpress.dto.AuthRequestDto;
 import com.coolieexpress.dto.LoginRequestDto;
+import com.coolieexpress.dto.LoginResponseDto;
 import com.coolieexpress.entity.Location;
 import com.coolieexpress.entity.User;
 import com.coolieexpress.repository.LocationRepository;
@@ -82,12 +83,21 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public String login(LoginRequestDto loginDto) {
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginDto.getLoginId(), loginDto.getPassword())
-        );
-        
-        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
-        return jwtUtil.generateToken(userDetails);
+    public LoginResponseDto login(LoginRequestDto loginDto) {
+        try {
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(loginDto.getLoginId(), loginDto.getPassword())
+            );
+            
+            CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+            if (userDetails == null) {
+                throw new RuntimeException("INVALID_CREDENTIALS");
+            }
+
+            String token = jwtUtil.generateToken(userDetails);
+            return new LoginResponseDto(token, userDetails.getUser().getId(), userDetails.getUser().getRole().name());
+        } catch (org.springframework.security.core.AuthenticationException e) {
+            throw new RuntimeException("INVALID_CREDENTIALS");
+        }
     }
 }

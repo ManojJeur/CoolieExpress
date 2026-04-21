@@ -15,6 +15,7 @@ D:\Co\coolie-express\src\main\java\com\coolieexpress\dto\AuthRequestDto.java
 D:\Co\coolie-express\src\main\java\com\coolieexpress\dto\UserMapper.java
 D:\Co\coolie-express\src\main\java\com\coolieexpress\entity\BookingStatus.java
 D:\Co\coolie-express\src\main\java\com\coolieexpress\dto\OtpVerificationDto.java
+D:\Co\coolie-express\src\main\java\com\coolieexpress\dto\LoginResponseDto.java
 D:\Co\coolie-express\src\main\java\com\coolieexpress\service\impl\BookingServiceImpl.java
 D:\Co\coolie-express\src\main\java\com\coolieexpress\CoolieExpressApplication.java
 D:\Co\coolie-express\src\main\java\com\coolieexpress\dto\UserDto.java

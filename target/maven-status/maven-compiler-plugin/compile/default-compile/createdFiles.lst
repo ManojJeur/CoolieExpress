@@ -5,6 +5,7 @@ com\coolieexpress\config\WebConfig.class
 com\coolieexpress\dto\LocationUpdateRequestDto.class
 com\coolieexpress\repository\LocationRepository.class
 com\coolieexpress\config\SecurityConfig.class
+com\coolieexpress\dto\LoginResponseDto.class
 com\coolieexpress\config\OpenApiConfig.class
 com\coolieexpress\exception\GlobalExceptionHandler.class
 com\coolieexpress\security\JwtUtil.class
